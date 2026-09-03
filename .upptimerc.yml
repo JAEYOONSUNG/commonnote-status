@@ -19,10 +19,10 @@ status-website:
   logoUrl: https://commonnote.app/favicon.svg
   name: CommonNote 상태
   introTitle: "**CommonNote** 서비스 가동 상태"
-  introMessage: 웹·API, 실시간 편집 서버, 앱 업데이트 배포 세 곳을 5분마다 확인합니다. 장애는 자동으로 이슈로 기록되고 복구되면 닫힙니다.
+  introMessage: 웹·API, 실시간 편집 서버, 앱 업데이트 배포 세 곳을 5분마다 확인합니다. 보기 좋은 화면은 <a href=\"https://commonnote.app/status\">commonnote.app/status</a> 에 있고, 이 페이지는 원본 데이터입니다.
   navbar:
     - title: 상태
-      href: /
+      href: https://commonnote.app/status
     - title: 장애 이력
       href: https://github.com/JAEYOONSUNG/commonnote-status/issues?q=is%3Aissue+label%3Astatus
     - title: CommonNote
