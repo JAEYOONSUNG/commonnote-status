@@ -1,31 +1,76 @@
-# Change these first
-owner: upptime # Your GitHub organization or username, where this repository lives
-repo: upptime # The name of this repository
+# Upptime (https://upptime.js.org) — CommonNote 상태 페이지 설정
+owner: JAEYOONSUNG
+repo: commonnote-status
 
 sites:
-  - name: Google
-    url: https://www.google.com
-  - name: Wikipedia
-    url: https://en.wikipedia.org
-  - name: Hacker News
-    url: https://news.ycombinator.com
-  - name: Secret Site
-    url: $SECRET_SITE
+  - name: CommonNote 웹·API
+    url: https://commonnote.app/api/health
+    expectedStatusCodes: [200]
+  - name: CommonNote 실시간 편집 서버
+    url: https://commonnote.app/collab
+    expectedStatusCodes: [200]
+  - name: CommonNote 다운로드(맥 앱 업데이트)
+    url: https://commonnote.app/downloads/latest.json
+    expectedStatusCodes: [200]
 
 status-website:
-  # Add your custom domain name, or remove the `cname` line if you don't have a domain
-  # Uncomment the `baseUrl` line if you don't have a custom domain and add your repo name there
-  cname: demo.upptime.js.org
-  # baseUrl: /your-repo-name
-  logoUrl: https://raw.githubusercontent.com/upptime/upptime.js.org/master/static/img/icon.svg
-  name: Upptime
-  introTitle: "**Upptime** is the open-source uptime monitor and status page, powered entirely by GitHub."
-  introMessage: This is a sample status page which uses **real-time** data from our [GitHub repository](https://github.com/upptime/upptime). No server required — just GitHub Actions, Issues, and Pages. [**Get your own for free**](https://github.com/upptime/upptime)
+  cname: ""
+  baseUrl: /commonnote-status
+  logoUrl: https://commonnote.app/favicon.svg
+  name: CommonNote 상태
+  introTitle: "**CommonNote** 서비스 가동 상태"
+  introMessage: 웹·API, 실시간 편집 서버, 앱 업데이트 배포 세 곳을 5분마다 확인합니다. 장애는 자동으로 이슈로 기록되고 복구되면 닫힙니다.
   navbar:
-    - title: Status
+    - title: 상태
       href: /
-    - title: GitHub
-      href: https://github.com/$OWNER/$REPO
+    - title: 장애 이력
+      href: https://github.com/JAEYOONSUNG/commonnote-status/issues?q=is%3Aissue+label%3Astatus
+    - title: CommonNote
+      href: https://commonnote.app
 
-# Upptime also supports notifications, assigning issues, and more
-# See https://upptime.js.org/docs/configuration
+# 이슈에 붙는 라벨 — 기본값 유지
+i18n:
+  activeIncidentSummary: 활성 장애
+  allSystemsOperational: 모든 서비스 정상
+  incidentReport: 장애 보고
+  incidentTitle: 장애 $NUMBER
+  up: 정상
+  down: 장애
+  degraded: 느림
+  overallUptime: 전체 가동률
+  responseTime: 응답 시간
+  readMore: 자세히
+  live: 실시간
+  liveStatus: 실시간 상태
+  pastIncidents: 지난 장애
+  pastIncidentsResolved: $EVENTS건 · $POSTS건 기록 · $MINUTES분 만에 복구
+  pastScheduledMaintenance: 지난 점검
+  activeIncidents: 진행 중 장애
+  incidentReportSummary: 장애 요약
+  scheduledMaintenanceSummary: 예정 점검
+  overallUptimeTitle: 전체 가동률
+  incidentDetails: 장애 상세
+  incidentFixed: 이 장애는 $MINUTES분 만에 해결됐습니다
+  incidentOngoing: 진행 중
+  incidentOpenedAt: 시작
+  incidentClosedAt: 해결
+  incidentSubtitle: 장애 $NUMBER
+  incidentViewOnGitHub: GitHub 에서 보기
+  incidentCommentSummary: 댓글
+  incidentReadMore: 자세히 보기
+  footerStatus: 실시간 상태
+  footerAbout: 이 페이지는 Upptime 으로 만들어졌습니다
+  websiteStatus: 웹사이트 상태
+  responseTimeMs: 응답 시간 $MS ms
+  responseTimeDay: 24시간 응답 시간
+  responseTimeWeek: 7일 응답 시간
+  responseTimeMonth: 30일 응답 시간
+  responseTimeYear: 1년 응답 시간
+  uptimeDay: 24시간 가동률
+  uptimeWeek: 7일 가동률
+  uptimeMonth: 30일 가동률
+  uptimeYear: 1년 가동률
+  ms: ms
+  loading: 불러오는 중
+  navGitHub: GitHub
+  scheduledMaintenance: 예정 점검
