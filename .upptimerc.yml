@@ -7,7 +7,7 @@ sites:
     url: https://commonnote.app/api/health
     expectedStatusCodes: [200]
   - name: CommonNote 실시간 편집 서버
-    url: https://commonnote.app/collab
+    url: https://commonnote.app/collab/health
     expectedStatusCodes: [200]
   - name: CommonNote 다운로드(맥 앱 업데이트)
     url: https://commonnote.app/downloads/latest.json
