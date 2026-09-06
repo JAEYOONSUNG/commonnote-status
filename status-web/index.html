@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="CommonNote 외부 감시 기록과 서비스 상태. 앱 서버와 독립적으로 제공됩니다.">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>CommonNote 상태</title>
+<link rel="icon" href="./assets/favicon.svg">
+<link rel="stylesheet" href="./assets/fonts/pretendard/pretendard.css">
+<link rel="stylesheet" href="./status.css">
+</head>
+<body>
+<a class="skip" href="#main" data-i18n="skip">본문으로 건너뛰기</a>
+<div class="wrap">
+  <header>
+    <a class="brand" href="https://commonnote.app/"><img src="./assets/icon-192.png" width="26" height="26" alt=""><span>CommonNote</span><small data-i18n="brand.status">상태</small></a>
+    <nav aria-label="페이지 메뉴">
+      <a href="#incidents-section" data-i18n="nav.incidents">장애 이력</a>
+      <a href="https://github.com/JAEYOONSUNG/commonnote-status" rel="noopener" data-i18n="nav.data">감시 데이터</a>
+      <a href="https://commonnote.app/" data-i18n="nav.app">앱으로</a>
+      <button type="button" class="lang" id="lang-toggle" aria-label="Switch to English">EN</button>
+    </nav>
+  </header>
+  <main id="main">
+    <div class="hero">
+      <div class="pill" id="overall" data-state="loading" role="status"><span class="dot" aria-hidden="true"></span><span id="overall-text">상태를 확인하는 중…</span></div>
+      <h1 id="headline" data-i18n="headline.default">CommonNote 서비스 가동 상태</h1>
+      <p class="sub" data-i18n="sub">앱 서버와 독립된 외부 감시 기록입니다. 오래된 기록은 현재 상태로 단정하지 않습니다.</p>
+      <div class="meta">
+        <span id="updated">—</span>
+        <span class="live" id="monitor"><i aria-hidden="true"></i><span>—</span></span>
+        <button type="button" class="refresh" id="refresh" data-i18n="refresh">다시 확인</button>
+      </div>
+      <p class="meta-note" data-i18n="note">정상 상태가 이어지면 상태 기록 시각은 바뀌지 않을 수 있습니다. 감시 작업 실행과 상태 기록은 별도로 표시합니다.</p>
+      <p class="error-note" id="error" role="status" hidden></p>
+    </div>
+    <div class="grid" id="sites" aria-live="polite"></div>
+    <section class="incidents" id="incidents-section">
+      <h3 data-i18n="incidents.title">장애 이력</h3>
+      <div id="incidents"></div>
+    </section>
+  </main>
+  <footer>
+    <span id="since" data-i18n="footer.default">감시 데이터: GitHub Actions · 실행 지연 가능</span>
+    <span><a href="https://github.com/JAEYOONSUNG/commonnote-status/issues?q=is%3Aissue+label%3Astatus" rel="noopener" data-i18n="footer.issues">GitHub 장애 기록</a> · <a href="https://commonnote.app/privacy" data-i18n="footer.privacy">개인정보</a></span>
+  </footer>
+  <noscript><p class="empty">상태 표시에는 JavaScript가 필요합니다. <a href="https://github.com/JAEYOONSUNG/commonnote-status">외부 감시 저장소</a>에서 기록을 확인할 수 있습니다.</p></noscript>
+</div>
+<script type="module" src="./status.js"></script>
+</body>
+</html>
+

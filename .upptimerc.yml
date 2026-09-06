@@ -16,10 +16,10 @@ sites:
 status-website:
   cname: ""
   baseUrl: /commonnote-status
-  logoUrl: https://commonnote.app/favicon.svg
+  logoUrl: https://jaeyoonsung.github.io/commonnote-status/assets/favicon.svg
   name: CommonNote 상태
   introTitle: "**CommonNote** 서비스 가동 상태"
-  introMessage: 웹·API, 실시간 편집 서버, 앱 업데이트 배포의 외부 관측 기록입니다. GitHub Actions 실행은 지연될 수 있으며 5분 이내 점검을 보장하지 않습니다. 현재 관측 시각과 지연 여부는 <a href=\"https://commonnote.app/status\">상세 상태</a>에서 확인하세요. 이 페이지는 앱 서버와 독립적으로 제공됩니다.
+  introMessage: 웹·API, 실시간 편집 서버, 앱 업데이트 배포의 외부 감시 기록입니다. GitHub Actions 실행은 지연될 수 있으며 5분 이내 점검을 보장하지 않습니다. 사용자용 상태 화면은 별도 CommonNote Status Pages 작업으로 배포됩니다.
   navbar:
     - title: 상태
       href: https://jaeyoonsung.github.io/commonnote-status/
@@ -37,7 +37,9 @@ i18n:
   up: 정상
   down: 장애
   degraded: 느림
-  overallUptime: 전체 가동률
+  overallUptime: "전체 가동률 $UPTIME"
+  averageResponseTime: "평균 응답 시간 $TIME ms"
+  averageResponseTimeTitle: 평균 응답 시간
   responseTime: 응답 시간
   readMore: 자세히
   live: 실시간
@@ -60,6 +62,7 @@ i18n:
   incidentReadMore: 자세히 보기
   footerStatus: 실시간 상태
   footerAbout: 이 페이지는 Upptime 으로 만들어졌습니다
+  footer: "이 페이지는 [공개 소스]($REPO)로 관리됩니다. 감시 도구: [Upptime](https://upptime.js.org)"
   websiteStatus: 웹사이트 상태
   responseTimeMs: 응답 시간 $MS ms
   responseTimeDay: 24시간 응답 시간

@@ -1,0 +1,63 @@
+name: CommonNote Status Pages
+on:
+  push:
+    branches: [master]
+    paths: ["status-web/**", "scripts/build-status.mjs", "tests/**", "package.json", ".github/workflows/commonnote-status.yml", ".upptimerc.yml"]
+  workflow_dispatch:
+  workflow_run:
+    workflows: ["Uptime CI", "Response Time CI", "Summary CI"]
+    types: [completed]
+  issues:
+    types: [opened, closed, reopened, edited, labeled, unlabeled]
+  schedule:
+    - cron: "17,47 * * * *"
+
+permissions: {}
+concurrency:
+  group: commonnote-custom-status-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: >-
+      github.repository == 'JAEYOONSUNG/commonnote-status' &&
+      github.ref == 'refs/heads/master' &&
+      (github.event_name != 'workflow_run' ||
+       (github.event.workflow_run.head_repository.full_name == github.repository &&
+        github.event.workflow_run.head_branch == 'master'))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+      issues: read
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: master
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: "22"
+          package-manager-cache: false
+      - name: Test data, rendering contracts and static build
+        run: node --test tests/*.test.mjs
+      - name: Build standalone site and public status snapshot
+        run: node scripts/build-status.mjs _status_dist
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - uses: actions/upload-pages-artifact@7b1f4a764d45c48632c6b24a0339c27f5614fb0b # v4
+        with:
+          path: _status_dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy reviewed standalone artifact
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4

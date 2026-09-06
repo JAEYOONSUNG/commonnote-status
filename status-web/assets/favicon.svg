@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="0.6" stop-color="#fafafa"/>
+      <stop offset="1" stop-color="#efeff1"/>
+    </linearGradient>
+    <linearGradient id="crimson" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c92a44"/>
+      <stop offset="0.45" stop-color="#a51c30"/>
+      <stop offset="1" stop-color="#7f1425"/>
+    </linearGradient>
+    <linearGradient id="gloss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glyphShadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#7f1425" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+
+  <!-- porcelain white tile -->
+  <rect width="512" height="512" rx="114" fill="url(#bg)"/>
+  <rect x="2" y="2" width="508" height="508" rx="112" fill="none" stroke="#d4d4d8" stroke-width="2"/>
+  <rect x="4" y="4" width="504" height="300" rx="110" fill="url(#gloss)" opacity="0.35"/>
+
+  <!-- Harvard-crimson CN ambigram: N with arc legs — the left leg reads C,
+       the two arcs complete the circle of people writing together -->
+  <g stroke="url(#crimson)" stroke-width="52" stroke-linecap="round" stroke-linejoin="round" fill="none" filter="url(#glyphShadow)">
+    <path d="M 191 143 A 130 130 0 0 0 191 369"/>
+    <path d="M 321 143 A 130 130 0 0 1 321 369"/>
+    <path d="M 191 143 C 246 235 266 277 321 369"/>
+  </g>
+  <!-- subtle top specular on the left arc -->
+  <path d="M 176 168 A 118 118 0 0 0 140 250" stroke="#ffffff" stroke-opacity="0.35" stroke-width="9" stroke-linecap="round" fill="none"/>
+</svg>
